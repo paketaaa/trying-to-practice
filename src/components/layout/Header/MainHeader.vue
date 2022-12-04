@@ -1,16 +1,24 @@
 <template>
-  <MainHeaderDesktop
-  v-if="$mq === 'sm'"
-  />
+  <div>
+    <MainHeaderDesktop
+      v-show="$mq === 'desktop'"
+    />
+    <MainHeaderMobile
+      v-show="$mq !== 'desktop'"
+    />
+  </div>
 </template>
 
 <script>
 import MainHeaderDesktop from './MainHeaderDesktop.vue';
+import MainHeaderMobile from './MainHeaderMobile.vue';
 
 export default {
   name: 'MainHeader',
+
   components: {
-    MainHeaderDesktop
+    MainHeaderDesktop,
+    MainHeaderMobile
   }
 };
 </script>
@@ -45,6 +53,10 @@ export default {
     @include hover() {
       color: $Rubin;
     }
+  }
+
+  @include respond-to(lTablet) {
+    padding: 8px 16px;
   }
 }
 </style>

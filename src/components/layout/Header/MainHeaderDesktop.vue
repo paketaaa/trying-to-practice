@@ -11,13 +11,23 @@
         <span class="header-main__prelink">FAQ</span>
       </li>
     </ul>
-    <img alt="Vue logo" class="header-main__logo" src="../../../assets/logo.png">
+    <VueLogo
+      class="header-main__logo"
+      :width="48"
+      :height="48"
+    />
   </div>
 </template>
 
 <script>
-export default {
+import VueLogo from '../../VueLogo.vue';
 
+export default {
+  name: 'MainHeaderDesktop',
+
+  components: {
+    VueLogo
+  }
 };
 </script>
 

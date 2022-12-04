@@ -1,49 +1,33 @@
 <template>
   <div id="app">
     <TheHeader/>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="container">
+      <MainFilter/>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-import TheHeader from './components/layout/TheHeader.vue';
+import TheHeader from './components/layout/Header/TheHeader.vue';
+import MainFilter from './components/Filter/MainFilter.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    TheHeader
+    TheHeader,
+    MainFilter
   },
 
-  data () {
-    return {
-      isMobile: null
-    };
+  computed: {
+    isMobile () {
+      return this.$mq;
+    }
   },
 
   mounted () {
-    this.handleisMobile();
   },
 
   methods: {
-    handleisMobile () {
-      if (window.matchMedia('(max-width: 1150px)').matches) {
-        this.isMobile = true;
-      } else {
-        this.isMobile = false;
-      }
-
-      window.addEventListener('resize', () => {
-        if (window.matchMedia('(max-width: 1150px)').matches) {
-          this.isMobile = true;
-        } else {
-          this.isMobile = false;
-        }
-      });
-      console.log(this.$root);
-      // this.$root.isMobile = this.isMobile;
-    }
   }
 };
 </script>
@@ -51,4 +35,16 @@ export default {
 <style lang="scss">
 @import "./assets/styles/common/variables.scss";
 @import "./assets/styles/common/normalize.scss";
+@import "./assets/styles/components/multiselect.scss";
+
+.container {
+  padding: 40px 20px;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.filter {
+  max-width: 100%;
+}
 </style>
