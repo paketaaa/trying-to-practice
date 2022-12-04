@@ -1,0 +1,46 @@
+$small-xs: 375px;
+$small: 720px;
+$sTablet: 768px;
+$lTablet: 1150px;
+$large: 1360px;
+
+/* stylelint-disable */
+@mixin respond-to($media) {
+    @if $media ==mobile-sm {
+        @media only screen and (max-width: $small-xs - 1) {
+            @content;
+        }
+    }
+
+    @else if $media ==mobile {
+        @media only screen and (max-width: $small) {
+            @content;
+        }
+    }
+
+    @else if $media ==sTablet {
+        @media only screen and (max-width: $sTablet) {
+            @content;
+        }
+    }
+
+    @else if $media ==lTablet {
+        @media only screen and (max-width: $lTablet) {
+            @content;
+        }
+    }
+
+    @else if $media ==desktop {
+        @media only screen and (min-width: $lTablet + 1) {
+            @content;
+        }
+    }
+}
+
+@mixin hover() {
+    &:hover {
+        @media (min-width: $lTablet + 1) {
+            @content;
+        }
+    }
+}
